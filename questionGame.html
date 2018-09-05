@@ -4,15 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>True or False Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
 </head>
 
 <body>
-    <div>
-        <h1>True or False Game</h1>
-        <h2>To play, press "t" for true and "f" for false.</h2>
-        <p id="question"></p>
-        <p id="score"></p>
-        
+    <div class="container bg-primary text-white">
+        <div class="row" style="padding-top: 10%; padding-bottom: 10%; margin-top: 5%">
+            <div class="col text-center">
+                <h1>True or False Game</h1>
+                <h2>To play, press "t" for true and "f" for false.</h2>
+                <p id="question"></p>
+                <p id="score"></p>
+            </div>
+        </div>
     </div>
     <script type="text/javascript">
 
@@ -35,7 +40,7 @@
             if (questionIndex <= questions.length - 1) {
                 document.getElementById("question").innerHTML = questions[questionIndex].q;
             } else {
-                document.getElementById("question").innerHTML = "<p> La Fin! </p>"
+                document.getElementById("question").innerHTML = "<p><h3> La Fin! </h3></p>"
                 document.getElementById("score").innerHTML =
                     "<p> Out of " + questions.length + " questions, you have answered " + correctAnswer + " correctly.</p>";
             }
@@ -60,8 +65,8 @@
                 updateScore();
                 questionIndex++;
                 renderQuestion();
-            } 
-            else {  
+            }
+            else {
                 incorrectAnswer++;
                 updateScore();
                 questionIndex++;
