@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>True or False Game</title>
+</head>
+
+<body>
+    <div>
+        <h1>True or False Game</h1>
+        <h2>To play, press "t" for true and "f" for false.</h2>
+        <p id="question"></p>
+        <p id="score"></p>
+        
+    </div>
+    <script type="text/javascript">
+
+        var correctAnswer = 0;
+        var incorrectAnswer = 0;
+
+        var questions = [
+            { q: "The Eiffel tower  was the tallest building in the world until the construction of New York's Chrysler Building in 1930.", a: "t" },
+            { q: "The Eiffel tower has four platforms with observation deck.", a: "f" },
+            { q: "A souvenir shop and bar are located on the first platform of the Eiffel tower.", a: "f" },
+            { q: "The Eiffel tower was designed and built by Alexandre Gustave Eiffel for the International Exhibition of Paris of 1889.", a: "t" },
+            { q: "The Eiffel tower is not in France.", a: "f" },
+            { q: "The famous castle (chateau) of Versailles was built by Louis XIV and is located just outside of Paris.", a: "t" },
+            { q: "Le Centre Pompidou is a large cultural complex in Paris that contains art exhibitions and a large media library.", a: "t" }
+        ];
+
+        var questionIndex = 0;
+
+        function renderQuestion() {
+            if (questionIndex <= questions.length - 1) {
+                document.getElementById("question").innerHTML = questions[questionIndex].q;
+            } else {
+                document.getElementById("question").innerHTML = "<p> La Fin! </p>"
+                document.getElementById("score").innerHTML =
+                    "<p> Out of " + questions.length + " questions, you have answered " + correctAnswer + " correctly.</p>";
+            }
+        };
+
+        function updateScore() {
+            document.getElementById("score").innerHTML = "<p>Correct answers: " + correctAnswer + "</p><p> Incorrect answers: " + incorrectAnswer + "</p>";
+        };
+
+        renderQuestion();
+
+        document.onkeyup = function (event) {
+
+            if (questionIndex === questions.length) {
+                return;
+            }
+
+            var userGuess = event.key.toLowerCase();
+
+            if (userGuess === questions[questionIndex].a) {
+                correctAnswer++;
+                updateScore();
+                questionIndex++;
+                renderQuestion();
+            } 
+            else {  
+                incorrectAnswer++;
+                updateScore();
+                questionIndex++;
+                renderQuestion();
+            }
+        };
+
+    </script>
+</body>
+
+</html>
